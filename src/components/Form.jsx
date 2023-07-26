@@ -1,6 +1,7 @@
-import {Form, Row, Col, Button} from 'react-bootstrap';
+import {Form, Row, Col, Button, InputGroup} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import './Form.css'
 
 const Calculadora = ()=>{
 
@@ -24,38 +25,40 @@ const Calculadora = ()=>{
     }
 
     return(
-        <Form>
-            <Form.Check
-                        inline
-                        type="radio"
-                        id="radio1"
-                        label="Femenino"
-                        name="radioGroup"
-                        />
-            <Form.Check
-                        inline
-                        type="radio"
-                        id="radio2"
-                        label="Masculino"
-                        name="radioGroup"
-                        />
-            <Form.Group as={Row}>
-                <Form.Label column sm={2}>Altura</Form.Label>
-                <Col sm={1}>
-                    <Form.Control type="number" placeholder="en cm" value={altura} onChange={cambioEnAltura}/>
-                </Col>
-                <Form.Label column sm={2}>Peso</Form.Label>
-                <Col sm={1}>
-                    <Form.Control type="number" placeholder="en Kg" value={peso} onChange={cambioEnPeso}/>
-                </Col>
-            </Form.Group>
-            <Form.Group>
-                <Button variant="primary" onClick={calcularIMC}>
-                    Calcular
-                </Button>
-            </Form.Group>
-            {resultado && <p>Tu indice de masa corporal (IMC) es: {resultado}</p>}
-        </Form>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+            <Form className='form'>
+                <Form.Check
+                            inline
+                            type="radio"
+                            id="radio1"
+                            label="Femenino"
+                            name="radioGroup"
+                            />
+                <Form.Check
+                            inline
+                            type="radio"
+                            id="radio2"
+                            label="Masculino"
+                            name="radioGroup"
+                            />
+                <Form.Group as={Row}>
+                    <Form.Label column sm={1}>Altura</Form.Label>
+                    <Col sm={3}>
+                        <Form.Control type="number" placeholder="en cm" value={altura} onChange={cambioEnAltura}/>
+                    </Col>
+                    <Form.Label column sm={1}>Peso</Form.Label>
+                    <Col sm={3}>
+                        <Form.Control type="number" placeholder="en Kg" value={peso} onChange={cambioEnPeso}/>
+                    </Col>
+                </Form.Group>
+                <Form.Group>
+                    <Button variant="primary" onClick={calcularIMC}>
+                        Calcular
+                    </Button>
+                </Form.Group>
+                {resultado && <p>Tu indice de masa corporal (IMC) es: {resultado}</p>}
+            </Form>
+        </div>
     )
 }
 export default Calculadora
