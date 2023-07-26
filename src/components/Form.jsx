@@ -5,10 +5,12 @@ import './Form.css'
 
 const Calculadora = ()=>{
 
+    //disponemos de todos los estados
     const [peso,setPeso] = useState('')
     const [altura,setAltura] = useState('')
     const [resultado,setResultado] = useState('')
 
+    //funciones que captan los eventos
     const cambioEnPeso = (e)=>{
         setPeso(e.target.value);
     }
@@ -27,20 +29,26 @@ const Calculadora = ()=>{
     return(
         <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
             <Form className='form'>
-                <Form.Check
-                            inline
-                            type="radio"
-                            id="radio1"
-                            label="Femenino"
-                            name="radioGroup"
-                            />
-                <Form.Check
-                            inline
-                            type="radio"
-                            id="radio2"
-                            label="Masculino"
-                            name="radioGroup"
-                            />
+                <Form.Group as={Row}>
+                    <Col sm={3}>
+                        <Form.Check
+                                    inline
+                                    type="radio"
+                                    id="radio1"
+                                    label="Femenino"
+                                    name="radioGroup"
+                                    />
+                    </Col>
+                    <Col sm={3}>
+                        <Form.Check
+                                    inline
+                                    type="radio"
+                                    id="radio2"
+                                    label="Masculino"
+                                    name="radioGroup"
+                                    />
+                    </Col>
+                </Form.Group>
                 <Form.Group as={Row}>
                     <Form.Label column sm={1}>Altura</Form.Label>
                     <Col sm={3}>
