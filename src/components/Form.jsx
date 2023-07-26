@@ -30,7 +30,7 @@ const Calculadora = ()=>{
         <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
             <Form className='form'>
                 <Form.Group as={Row}>
-                    <Col sm={3}>
+                    <Col sm={3} className='mb-3'>
                         <Form.Check
                                     inline
                                     type="radio"
@@ -49,7 +49,7 @@ const Calculadora = ()=>{
                                     />
                     </Col>
                 </Form.Group>
-                <Form.Group as={Row}>
+                <Form.Group as={Row} className='mb-3'>
                     <Form.Label column sm={1}>Altura</Form.Label>
                     <Col sm={3}>
                         <Form.Control type="number" placeholder="en cm" value={altura} onChange={cambioEnAltura}/>
@@ -59,7 +59,7 @@ const Calculadora = ()=>{
                         <Form.Control type="number" placeholder="en Kg" value={peso} onChange={cambioEnPeso}/>
                     </Col>
                 </Form.Group>
-                <Form.Group>
+                <Form.Group className='mb-3'>
                     <Button variant="primary" onClick={calcularIMC}>
                         Calcular
                     </Button>
