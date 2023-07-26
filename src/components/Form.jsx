@@ -1,36 +1,60 @@
-import {Form, Col} from 'react-bootstrap';
+import {Form, Row, Col, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 
 const Calculadora = ()=>{
 
+    const [peso,setPeso] = useState('')
+    const [altura,setAltura] = useState('')
+    const [resultado,setResultado] = useState('')
+
+    const cambioEnPeso = (e)=>{
+        setPeso(e.target.value);
+    }
+    const cambioEnAltura = (e)=>{
+        setAltura(e.target.value)
+    }
+
+    //Calcular el IMC
+    const calcularIMC = ()=>{
+        const pesoIngreso = parseFloat(peso);
+        const alturaEnCm = parseFloat(altura)/100; //convierte en metros
+        const imc = (pesoIngreso/(alturaEnCm*alturaEnCm));
+        setResultado(imc.toFixed(2))
+    }
+
     return(
         <Form>
-            <Form.Row>
-            <Form.Group as={Col} xs={12} sm={6} md={4} lg={3}>
-            <Form.Control
-            type="number"
-            placeholder="Ingresa un número"
-            min="0" // Opcional: establece un valor mínimo si lo deseas.
-            step="1" // Opcional: establece el incremento para los números si es necesario.
-            />
-            </Form.Group>
-                <Form.Group>
-                        <Form.Check
+            <Form.Check
                         inline
                         type="radio"
                         id="radio1"
-                        label="Radio 1"
+                        label="Femenino"
                         name="radioGroup"
                         />
-                        <Form.Check
+            <Form.Check
                         inline
                         type="radio"
                         id="radio2"
-                        label="Radio 2"
+                        label="Masculino"
                         name="radioGroup"
                         />
-                    </Form.Group>
-                </Form.Row>
+            <Form.Group as={Row}>
+                <Form.Label column sm={2}>Altura</Form.Label>
+                <Col sm={1}>
+                    <Form.Control type="number" placeholder="en cm" value={altura} onChange={cambioEnAltura}/>
+                </Col>
+                <Form.Label column sm={2}>Peso</Form.Label>
+                <Col sm={1}>
+                    <Form.Control type="number" placeholder="en Kg" value={peso} onChange={cambioEnPeso}/>
+                </Col>
+            </Form.Group>
+            <Form.Group>
+                <Button variant="primary" onClick={calcularIMC}>
+                    Calcular
+                </Button>
+            </Form.Group>
+            {resultado && <p>Tu indice de masa corporal (IMC) es: {resultado}</p>}
         </Form>
     )
 }
