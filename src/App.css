@@ -1,8 +1,12 @@
 .App{
-    background-color: #C51605;
+    background-color: #4682b4;
+}
+.titulo{
+    position: sticky;
+    top: 0;
 }
 .App h1{
-    color: #FFE17B;
+    color: #9acd32;
     text-align: center;
-    padding-top: 50px;
+
 }

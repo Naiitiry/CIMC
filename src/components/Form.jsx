@@ -21,9 +21,22 @@ const Calculadora = ()=>{
     //Calcular el IMC
     const calcularIMC = ()=>{
         const pesoIngreso = parseFloat(peso);
-        const alturaEnCm = parseFloat(altura)/100; //convierte en metros
+        //convierte los centimetros en metros diviendolos por 100
+        const alturaEnCm = parseFloat(altura)/100; 
         const imc = (pesoIngreso/(alturaEnCm*alturaEnCm));
         setResultado(imc.toFixed(2))
+    }
+
+            //indicar, dependiendo el resultado, el estado de salud.
+    const resultadoIMC = () => {
+        return(
+            <div>
+                {resultado<=18.5 && <h3>Peso inferior al normal</h3>}
+                {resultado>=18.5 && resultado<=24.9 && <h3>Peso normal</h3>}
+                {resultado>=25.0 && resultado<=29.9 && <h3>Peso superior al normal</h3>}
+                {resultado>=30.0 && <h3>Obesidad</h3>}
+            </div>
+        )
     }
 
     return(
@@ -64,7 +77,11 @@ const Calculadora = ()=>{
                         Calcular
                     </Button>
                 </Form.Group>
-                {resultado && <p>Tu indice de masa corporal (IMC) es: {resultado}</p>}
+                {resultado && resultadoIMC &&
+                    <div>
+                        <h3>Tu índice de masa corporal (IMC) es: {resultado}</h3>
+                        <h3>{resultadoIMC()}</h3>
+                    </div>}
             </Form>
         </div>
     )

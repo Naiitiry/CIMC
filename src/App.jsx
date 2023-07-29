@@ -5,7 +5,9 @@ const App = () => {
 
   return (
     <div className='App'>
-      <h1>Calculadora de Indice de Masa Corporal</h1>
+      <div className='titulo'>
+        <h1>Calculadora de Indice de Masa Corporal</h1>
+      </div>
       <Calculadora/>
     </div>
   )
